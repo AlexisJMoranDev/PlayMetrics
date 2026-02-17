@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <!-- Estilos del encabezado de la pag principal con bootstrap -->
+
+    <!-- Codificación -->
     <head>
         <meta charset="utf-8"  />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"
+
+
+    <!-- Links Bootstrap para clases -->
+    <!-- navbar, container, alert, btn, collapse, bg-dark, navbar-dark -->
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
     />
+    <!-- Links Bootstrap -->
+    <!-- Font Awesome, libreria de iconos -->
     <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous"
     />
+    <!-- Nuestro CSS -->
+    <link rel="stylesheet" 
+          href="{{ url_for('static', filename='CSS/styles.css') }}"
+    />
+
     <!-- Encabezado de la pagina principal -->
     <title>{% block title %}PlayMetrics{% endblock %}</title>
     </head>
@@ -26,12 +38,13 @@
         data-toggle="collapse"
         data-target="#navbar"
       >
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
+          <!-- Enlaces para la barra de inicio/usuario -->
           {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a> <!-- Referencias de la pag principal "enlaces" -->
+          <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
@@ -76,6 +89,7 @@
       crossorigin="anonymous"
     ></script>
 
+<!-- Petición JS -->
 {% block javascript %}
     <script type="text/javascript">
       function deleteNote(noteId) {
