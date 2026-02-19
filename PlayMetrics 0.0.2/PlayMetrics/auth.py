@@ -44,8 +44,10 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        user = User.query.filter_by(email=email).first()
-        if user:
+        existing_user = User.query.filter_by(email=email).first()
+
+        #Mensajes para los usuarios registrados/por registrar, metodo flash
+        if existing_user:
             flash('El email ya existe.', category='error')
         elif len(email) < 4:
             flash('El correo debe ser mayor a 3 caracteres.', category='error')
@@ -57,11 +59,16 @@ def sign_up():
             flash('La contraseña debe ser mayor a 7 caracteres.', category='error')
         else:
             # Añade el usuario a la BD
-            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256'))
+            new_user = User(
+                email=email,
+                first_name=first_name,
+                password=generate_password_hash(password1, method='sha256')
+            )
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
-            flash('Cuenta creada!', category='success')
+
+            login_user(new_user, remember=True)
+            flash('Cuenta creada con éxito!', category='success')
             return redirect(url_for('views.home'))
 
     return render_template('sing_up.html', user=current_user)
