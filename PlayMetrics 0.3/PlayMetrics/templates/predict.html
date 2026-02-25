@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+
+
+{% block banner %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Usa la estrucutura del encavezado del base.html hacia predict.html -->
+    <meta charset="UTF-8">
+    <title>Modelo Predictivo | PlayMetrics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+</head>
+
+<body>
+
+    <!-- Botón de predicción -->
+    <section class="hero-predict">
+        <div class="hero-overlay">
+            <button type="button" class="btn-start btn-predict" onclick="document.getElementById('parametros').scrollIntoView({behavior:'smooth'})">
+                Predecir Proyecto
+            </button>
+        </div>
+    </section>
+{% endblock %}
+
+<!-- Parámetros del proyecto -->
+{% block content %}
+    <section id="parametros" class="predict-section">
+
+        <h2>Ingresa los parámetros</h2>
+
+        <form id="predict-form">
+
+            <div class="predict-grid">
+
+                <!-- Switches con los tags -->
+                <div class="predict-group">
+                    <h3>Plataformas</h3>
+
+                    <label class="switch">
+                        <input type="checkbox" name="linux">
+                        <span class="slider"></span>
+                        Linux
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="windows">
+                        <span class="slider"></span>
+                        Windows
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="mac">
+                        <span class="slider"></span>
+                        MacOS
+                    </label>
+                </div>
+
+                <div class="predict-group">
+                    <h3>Características</h3>
+
+                    <label class="switch">
+                        <input type="checkbox" name="singleplayer">
+                        <span class="slider"></span>
+                        Un jugador
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="multiplayer">
+                        <span class="slider"></span>
+                        Multijugador
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="freetoplay">
+                        <span class="slider"></span>
+                        Free to Play
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="vr">
+                        <span class="slider"></span>
+                        VR
+                    </label>
+                </div>
+
+                <div class="predict-group">
+                    <h3>Género</h3>
+
+                    <label class="switch">
+                        <input type="checkbox" name="indie">
+                        <span class="slider"></span>
+                        Indie
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="accion">
+                        <span class="slider"></span>
+                        Acción
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="rpg">
+                        <span class="slider"></span>
+                        RPG
+                    </label>
+
+                    <label class="switch">
+                        <input type="checkbox" name="simulacion">
+                        <span class="slider"></span>
+                        Simulación
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="predict-actions">
+                <button type="button" class="btn-predict">
+                    Analizar proyecto
+                </button>
+            </div>
+
+        </form>
+
+        <div class="prediction-result">
+            <div class="prediction-bar">
+                <div class="prediction-progress"></div>
+            </div>
+            <p class="prediction-label">Índice de predicción</p>
+        </div>
+
+        <div class="recommendations-box">
+            <h3>Recomendaciones</h3>
+            <p>Aquí se podrian mostrar las recomendaciones.</p>
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <!-- Pie de la web, copyright -->
+    <footer class="footer-section">
+        <div class="container text-right">
+            <p>&copy; PlayMetrics 2026</p>
+        </div>
+    </footer>
+{% endblock %}
+</body>
+</html>
