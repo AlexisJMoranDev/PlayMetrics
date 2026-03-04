@@ -15,4 +15,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True) #Correo del usuario
     password = db.Column(db.String(150)) #Contraseña del usuario
     first_name = db.Column(db.String(150)) #Primer nombre del usuario
+    avatar = db.Column(db.String(100), default='avatar1.png')
+    # Nota: estaria cool agregar mas datos.
     notes = db.relationship('Note') #Relación entre el usuario y sus notas

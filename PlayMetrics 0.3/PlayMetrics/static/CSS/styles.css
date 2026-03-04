@@ -78,14 +78,94 @@ html {
   transform: scale(1.05);
 }
 
+/* Segmento sobre nosotros de home.html */
+.intro-box{
+  padding: 60px 0;
+}
+
+.intro-content{
+  max-width: 600px;
+  margin-left: auto;
+  text-align: right;
+}
+
+.intro-title{
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.sub-title{
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #dddd21;
+  background-color: #1a1a2e;
+}
+
+.intro-points{
+  font-size: 1.1rem;
+  margin: 8px 0;
+}
+
+/* Imagenes con animación */
+.features{
+  padding: 80px 0;
+}
+
+.feature-item{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.8s ease;
+}
+
+.feature-item.right{
+  flex-direction: row-reverse;
+  transform: translateX(60px);
+}
+
+.feature-item img{
+  width: 300px;
+  border-radius: 12px;
+}
+
+.feature-text h3{
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #dddd21;
+  background-color: #1a1a2e;
+}
+
+.feature-text{
+  max-width: 500px;
+}
+
+.feature-item.show{
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* Tarjetas estilos */
+.about-title{
+  color: #dddd21;
+  background-color: #1a1a2e;
+  padding: 0.5rem 1 rem;
+}
+
+
 .about-section {
   padding: 100px 0;
   background-color: #f4f6f9;
 }
 
 .tarjeta {
-  background: white;
+  background: rgb(195, 190, 190);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -98,7 +178,7 @@ html {
 }
 
 .tarjeta h3 {
-  font-weight: 600;
+  font-weight: 800;
   margin-bottom: 15px;
 }
 

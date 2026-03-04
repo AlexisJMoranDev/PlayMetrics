@@ -29,6 +29,7 @@ def login():
     return render_template('login.html', user=current_user)
 
 
+# Metodo para salir de usuario
 @auth.route("/logout")
 @login_required
 def logout():
@@ -36,6 +37,7 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
+# Metodo para crear usuario
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
@@ -72,3 +74,60 @@ def sign_up():
             return redirect(url_for('views.home'))
 
     return render_template('sing_up.html', user=current_user)
+
+@auth.route("/user/profile")
+@login_required
+def user_profile():
+    return render_template("user_profile.html", user=current_user)
+
+# Perfil de usuario / cambio de datos
+@auth.route("/edit/user", methods=['GET', 'POST'])
+@login_required
+def edit_user():
+
+    if request.method == 'POST':
+
+        new_email = request.form.get('email')
+        new_name = request.form.get('first_name')
+        new_password = request.form.get('new_password')
+        confirm_password = request.form.get('confirm_password')
+        current_password = request.form.get('current_password')
+
+        # Validar contraseña actual
+        if not check_password_hash(current_user.password, current_password):
+            flash('La contraseña actual es incorrecta.', category='error')
+            return redirect(url_for('auth.edit_user'))
+
+        # Validar email duplicado
+        existing_user = User.query.filter_by(email=new_email).first()
+        if existing_user and existing_user.id != current_user.id:
+            flash('Ese correo ya está registrado.', category='error')
+            return redirect(url_for('auth.edit_user'))
+
+        # Validar nuevas contraseñas
+        if new_password:
+            if new_password != confirm_password:
+                flash('Las nuevas contraseñas no coinciden.', category='error')
+                return redirect(url_for('auth.edit_user'))
+
+            if len(new_password) < 7:
+                flash('La nueva contraseña debe tener al menos 7 caracteres.', category='error')
+                return redirect(url_for('auth.edit_user'))
+
+            current_user.password = generate_password_hash(new_password, method='sha256')
+        
+        # Guardar avatares
+        new_avatar = request.form.get('avatar')
+        if new_avatar:
+            current_user.avatar = new_avatar
+
+        # Actualizar datos
+        current_user.email = new_email
+        current_user.first_name = new_name
+
+        db.session.commit()
+
+        flash('Datos actualizados correctamente.', category='success')
+        return redirect(url_for('auth.edit_user'))
+
+    return render_template("edit_user.html", user=current_user)
