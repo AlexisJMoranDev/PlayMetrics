@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}PlayMetrics{% endblock %}
+<!-- Hero del proyecto -->
+{% block banner %} 
+<section id="hero">
+  <div class="hero-content">
+    <h1>Predice el éxito, reduce riesgos <br> y crea mejores juegos</h1>
+    <!--<a href="{{ url_for('views.predict') }} class='btn-hero'"></a> --> <!-- Funcionalidad del Hero -->
+    <a href="/predict" class="btn-hero">Predice tu Proyecto</a>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<!-- Bloque intro -->
+<section class="intro-box">
+  <div class="container">
+    <div class="intro-container">
+      <h2 class="intro-title">PlayMetrics™</h2>
+      <br/>
+      <h2 class="sub-title d-block px-4 py-2">
+        Predice tu proyecto, obtén el éxito.</h2>
+      <div class="intro-points">
+        <p>- Apoyamos proyectos pequeños sin mucho presupuesto.</p>
+        <p>- Buscamos orientar programadores y desarrolladores que desean alcanzar sus metas.</p>
+        <p>- Nuestro modelo es constantemente alimentado con datos reales que refuerzan su aprendizaje.</p>
+        <p>- No almacenamos datos tuyos, todo es anonimo, por lo que tus proyectos estan seguros.</p>
+        <p>- Nuestro objetivo es apoyar a los desarrolladores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Imagenes intro con animaciones -->
+<section class="features">
+  <div class="container">
+
+    <div class="feature-item left">
+      <img src="{{ url_for('static', filename='image/desarrollador.png') }}" alt="Métricas inteligentes">
+      <div class="feature-text">
+        <h3>Objetivo de la experiencia.</h3>
+        <p>Nuestro modelo de inteligencia artificial busca patrones entre miles de proyectos lanzados en Steam, desmenuzando factores y variables que van desde géneros, tendencias del mercado y fechas de lanzamiento, hasta el índice de jugadores activos, la competencia y muchos otros datos más.<br> Todo ello alimenta un sistema robusto de predicción basado en un modelo de regresión lineal cuidadosamente elaborado, cuyo objetivo es ahorrar costos, generar seguridad, brindar soporte a proyectos y ofrecer herramientas que aumenten dicho índice de éxito.</p>
+      </div>
+    </div>
+
+    <div class="feature-item right">
+      <img src="{{ url_for('static', filename='image/Finanza.png') }}" alt="Optimización de tu proyecto">
+      <div class="feature-text">
+        <h3>Evalua el potencial financiero de tu proyecto.</h3>
+        <p>Cuando te registras en PlayMetrics, tu información se almacena en una base de datos protegida mediante cifrado avanzado, garantizando que únicamente tú tengas acceso a tus proyectos y datos asociados.<br> No compartimos, comercializamos ni utilizamos tu información con fines distintos a los necesarios para el funcionamiento de la plataforma.<br> La propiedad de los proyectos es completamente tuya y conservas el control total sobre ellos en todo momento. Además, cuando decides eliminar un proyecto, este se elimina de manera definitiva de nuestros sistemas, asegurando que no permanezcan copias activas en la plataforma.</p>
+      </div>
+    </div>
+
+    <div class="feature-item left">
+      <img src="{{ url_for('static', filename='image/exito.png') }}" alt="Crecimiento conjunto">
+      <div class="feature-text">
+        <h3>Estimar el éxito.</h3>
+        <p>Porque sabemos lo difícil, solitario y costoso que puede ser el desarrollo de videojuegos, asumimos el compromiso de crear una plataforma capaz de apoyar a los desarrolladores indie en cada etapa de su proceso.<br>Buscamos ayudar a reducir la ansiedad, el estrés, la incertidumbre y el miedo que suelen acompañar el lanzamiento de un proyecto, proporcionando un análisis claro de los puntos fuertes, medios y débiles de cada propuesta.<br> A través de un sistema de feedback gratuito y soporte continuo, impulsamos la toma de decisiones informadas y fomentamos la creación de títulos A y AA que tanto disfrutamos ver año tras año.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Tarjetas informativas intro-->
+<section id="sobre-nosotros" class="about-section">
+  <div class="container">
+    <h2 class="text-center mb-5 about-title">Sobre Nosotros</h2>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="tarjeta">
+          <h3>Tecnologías</h3>
+          <p>PlayMetrics utiliza herramientas modernas de análisis de datos y aprendizaje automático, enfocadas en la confiabilidad, escalabilidad e interpretabilidad de los resultados.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="tarjeta">
+          <h3>Algoritmos</h3>
+          <p>PlayMetrics busca aprovechar al maximo determinados algoritmos que beneficien al proyecto tales como lo son algoritmos para inteligencia artificial, web develpment y bases de datos tales como:<br>*Regresión Lineal-Predicción de ventas.<br>*Regresión Logistica-Clasificacion de éxito o fracaso.<br>*Hashing criptográfico-Bases de datos relacionales.<br>*Control de flujo y validación determinística.<br>*Cálculo probabilístico.<br>*Scoring heurístico.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="tarjeta">
+          <h3>Métricas</h3>
+          <p>El rendimiento de los modelos es evaluado mediante métricas estándar que permiten medir la precisión y confiabilidad de las predicciones:<br>*Compara titulos similares.<br>*Se alimenta de miles de datos que respaldan la veracidad del modelo.<br>*Usamos un modelo de regresión lineal capaz de usar estadísticas entre miles de variables.<br>Constantemente esta en actualización y aprendizaje el modelo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
+<!-- Pie de la web -->
+{% block footer %}
+    <footer class="footer-section">
+        <div class="container text-right">
+            <p>&copy; PlayMetrics 2026</p>
+        </div>
+    </footer>
+{% endblock %}
+
+<!-- Script para animar imagenes -->
+{% block scripts %}
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const items = document.querySelectorAll('.feature-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    items.forEach(item => {
+      observer.observe(item);
+    });
+  });
+</script>
+{% endblock %}

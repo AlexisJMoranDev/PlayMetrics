@@ -1,0 +1,1771 @@
+{% extends 'base.html' %}
+
+{% block banner %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Usa la estrucutura del encavezado del base.html hacia predict.html -->
+    <meta charset="UTF-8">
+    <title>Modelo Predictivo | PlayMetrics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+</head>
+
+<body>
+
+    <!-- Botón de predicción -->
+    <section class="hero-predict">
+        <div class="hero-overlay">
+            <button type="button" class="btn-start btn-predict" onclick="document.getElementById('parametros').scrollIntoView({behavior:'smooth'})">
+                Predecir Proyecto
+            </button>
+        </div>
+    </section>
+{% endblock %}
+
+<!-- Parámetros del proyecto -->
+{% block content %}
+    <section id="parametros" class="predict-section">
+
+        <h2>Ingresa los parámetros</h2>
+
+        <form id="predict-form">
+
+            <div class="predict-grid">
+
+                <!-- Switches con los tags -->
+                <div class="predict-group">
+
+                    <!--  Género  -->
+                    <h3>Géneros</h3>
+                    <div class="switches-container">
+                        <label class="switch">
+                            <input type="checkbox" name="genre_360_video">
+                            <span class="slider"></span>
+                            360 Video
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_accounting">
+                            <span class="slider"></span>
+                            Accounting
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_action">
+                            <span class="slider"></span>
+                            Action
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_adventure">
+                            <span class="slider"></span>
+                            Adventure
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_animation_modeling">
+                            <span class="slider"></span>
+                            Animation &amp; Modeling
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_audio_production">
+                            <span class="slider"></span>
+                            Audio Production
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_casual">
+                            <span class="slider"></span>
+                            Casual
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_design_illustration">
+                            <span class="slider"></span>
+                            Design &amp; Illustration
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_documentary">
+                            <span class="slider"></span>
+                            Documentary
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_early_access">
+                            <span class="slider"></span>
+                            Early Access
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_education">
+                            <span class="slider"></span>
+                            Education
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_episodic">
+                            <span class="slider"></span>
+                            Episodic
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_free_to_play">
+                            <span class="slider"></span>
+                            Free To Play
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_game_development">
+                            <span class="slider"></span>
+                            Game Development
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_gore">
+                            <span class="slider"></span>
+                            Gore
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_indie">
+                            <span class="slider"></span>
+                            Indie
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_massively_multiplayer">
+                            <span class="slider"></span>
+                            Massively Multiplayer
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_movie">
+                            <span class="slider"></span>
+                            Movie
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_nudity">
+                            <span class="slider"></span>
+                            Nudity
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_photo_editing">
+                            <span class="slider"></span>
+                            Photo Editing
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_rpg">
+                            <span class="slider"></span>
+                            RPG
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_racing">
+                            <span class="slider"></span>
+                            Racing
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_sexual_content">
+                            <span class="slider"></span>
+                            Sexual Content
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_short">
+                            <span class="slider"></span>
+                            Short
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_simulation">
+                            <span class="slider"></span>
+                            Simulation
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_software_training">
+                            <span class="slider"></span>
+                            Software Training
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_sports">
+                            <span class="slider"></span>
+                            Sports
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_strategy">
+                            <span class="slider"></span>
+                            Strategy
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_tutorial">
+                            <span class="slider"></span>
+                            Tutorial
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_utilities">
+                            <span class="slider"></span>
+                            Utilities
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_video_production">
+                            <span class="slider"></span>
+                            Video Production
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_violent">
+                            <span class="slider"></span>
+                            Violent
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="genre_web_publishing">
+                            <span class="slider"></span>
+                            Web Publishing
+                        </label>
+                    </div>
+                </div>
+
+                <hr class="predict-divider">
+
+                <!--  CATEGORIES  -->
+                <div class="predict-group">
+                    <h3>Categorías</h3>
+                    <div class="switches-container">
+
+                        <label class="switch">
+                            <input type="checkbox" name="cat_adjustable_difficulty">
+                            <span class="slider"></span>
+                            Adjustable Difficulty
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_adjustable_text_size">
+                            <span class="slider"></span>
+                            Adjustable Text Size
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_camera_comfort">
+                            <span class="slider"></span>
+                            Camera Comfort
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_captions_available">
+                            <span class="slider"></span>
+                            Captions available
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_chat_speech_to_text">
+                            <span class="slider"></span>
+                            Chat Speech-to-text
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_chat_text_to_speech">
+                            <span class="slider"></span>
+                            Chat Text-to-speech
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_co_op">
+                            <span class="slider"></span>
+                            Co-op
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_color_alternatives">
+                            <span class="slider"></span>
+                            Color Alternatives
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_commentary_available">
+                            <span class="slider"></span>
+                            Commentary available
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_cross_platform_multiplayer">
+                            <span class="slider"></span>
+                            Cross-Platform Multiplayer
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_custom_volume_controls">
+                            <span class="slider"></span>
+                            Custom Volume Controls
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_family_sharing">
+                            <span class="slider"></span>
+                            Family Sharing
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_full_controller_support">
+                            <span class="slider"></span>
+                            Full controller support
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_hdr_available">
+                            <span class="slider"></span>
+                            HDR available
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_in_app_purchases">
+                            <span class="slider"></span>
+                            In-App Purchases
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_includes_source_sdk">
+                            <span class="slider"></span>
+                            Includes Source SDK
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_includes_level_editor">
+                            <span class="slider"></span>
+                            Includes level editor
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_keyboard_only_option">
+                            <span class="slider"></span>
+                            Keyboard Only Option
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_lan_co_op">
+                            <span class="slider"></span>
+                            LAN Co-op
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_lan_pvp">
+                            <span class="slider"></span>
+                            LAN PvP
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_mmo">
+                            <span class="slider"></span>
+                            MMO
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_mods">
+                            <span class="slider"></span>
+                            Mods
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_mods_require_hl2">
+                            <span class="slider"></span>
+                            Mods (require HL2)
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_mouse_only_option">
+                            <span class="slider"></span>
+                            Mouse Only Option
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_multi_player">
+                            <span class="slider"></span>
+                            Multi-player
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_narrated_game_menus">
+                            <span class="slider"></span>
+                            Narrated Game Menus
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_online_co_op">
+                            <span class="slider"></span>
+                            Online Co-op
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_online_pvp">
+                            <span class="slider"></span>
+                            Online PvP
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_partial_controller_support">
+                            <span class="slider"></span>
+                            Partial Controller Support
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_playable_without_timed_input">
+                            <span class="slider"></span>
+                            Playable without Timed Input
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_pvp">
+                            <span class="slider"></span>
+                            PvP
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_remote_play_together">
+                            <span class="slider"></span>
+                            Remote Play Together
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_remote_play_on_phone">
+                            <span class="slider"></span>
+                            Remote Play on Phone
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_remote_play_on_tv">
+                            <span class="slider"></span>
+                            Remote Play on TV
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_remote_play_on_tablet">
+                            <span class="slider"></span>
+                            Remote Play on Tablet
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_save_anytime">
+                            <span class="slider"></span>
+                            Save Anytime
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_shared_split_screen">
+                            <span class="slider"></span>
+                            Shared/Split Screen
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_shared_split_screen_co_op">
+                            <span class="slider"></span>
+                            Shared/Split Screen Co-op
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_shared_split_screen_pvp">
+                            <span class="slider"></span>
+                            Shared/Split Screen PvP
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_single_player">
+                            <span class="slider"></span>
+                            Single-player
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_stats">
+                            <span class="slider"></span>
+                            Stats
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steam_achievements">
+                            <span class="slider"></span>
+                            Steam Achievements
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steam_cloud">
+                            <span class="slider"></span>
+                            Steam Cloud
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steam_leaderboards">
+                            <span class="slider"></span>
+                            Steam Leaderboards
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steam_timeline">
+                            <span class="slider"></span>
+                            Steam Timeline
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steam_trading_cards">
+                            <span class="slider"></span>
+                            Steam Trading Cards
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steam_turn_notifications">
+                            <span class="slider"></span>
+                            Steam Turn Notifications
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steam_workshop">
+                            <span class="slider"></span>
+                            Steam Workshop
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_steamvr_collectibles">
+                            <span class="slider"></span>
+                            SteamVR Collectibles
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_stereo_sound">
+                            <span class="slider"></span>
+                            Stereo Sound
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_subtitle_options">
+                            <span class="slider"></span>
+                            Subtitle Options
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_surround_sound">
+                            <span class="slider"></span>
+                            Surround Sound
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_touch_only_option">
+                            <span class="slider"></span>
+                            Touch Only Option
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_tracked_controller_support">
+                            <span class="slider"></span>
+                            Tracked Controller Support
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_vr_only">
+                            <span class="slider"></span>
+                            VR Only
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_vr_support">
+                            <span class="slider"></span>
+                            VR Support
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_vr_supported">
+                            <span class="slider"></span>
+                            VR Supported
+                        </label>
+                        <label class="switch">
+                            <input type="checkbox" name="cat_valve_anti_cheat_enabled">
+                            <span class="slider"></span>
+                            Valve Anti-Cheat enabled
+                        </label>
+                    </div>
+                </div>
+
+                <hr class="predict-divider">
+
+                <!--  TAGS  -->
+                <div class="predict-group">
+                    <h3>Tags</h3>
+                    <div class="switches-container">
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_1980s">
+                            <span class="slider"></span>
+                            1980s
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_1990s">
+                            <span class="slider"></span>
+                            1990's
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_2_5d">
+                            <span class="slider"></span>
+                            2.5D
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_2d">
+                            <span class="slider"></span>
+                            2D
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_2d_fighter">
+                            <span class="slider"></span>
+                            2D Fighter
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_2d_platformer">
+                            <span class="slider"></span>
+                            2D Platformer
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_360_video">
+                            <span class="slider"></span>
+                            360 Video
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_3d">
+                            <span class="slider"></span>
+                            3D
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_3d_fighter">
+                            <span class="slider"></span>
+                            3D Fighter
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_3d_platformer">
+                            <span class="slider"></span>
+                            3D Platformer
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_3d_vision">
+                            <span class="slider"></span>
+                            3D Vision
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_4_player_local">
+                            <span class="slider"></span>
+                            4 Player Local
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_4x">
+                            <span class="slider"></span>
+                            4X
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_6dof">
+                            <span class="slider"></span>
+                            6DOF
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_8bit_music">
+                            <span class="slider"></span>
+                            8-bit Music
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_atv">
+                            <span class="slider"></span>
+                            ATV
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_abstract">
+                            <span class="slider"></span>
+                            Abstract
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_action">
+                            <span class="slider"></span>
+                            Action
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_action_rpg">
+                            <span class="slider"></span>
+                            Action RPG
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_action_rts">
+                            <span class="slider"></span>
+                            Action RTS
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_action_roguelike">
+                            <span class="slider"></span>
+                            Action Roguelike
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_action_adventure">
+                            <span class="slider"></span>
+                            Action-Adventure
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_addictive">
+                            <span class="slider"></span>
+                            Addictive
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_adventure">
+                            <span class="slider"></span>
+                            Adventure
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_agriculture">
+                            <span class="slider"></span>
+                            Agriculture
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_aliens">
+                            <span class="slider"></span>
+                            Aliens
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_alternate_history">
+                            <span class="slider"></span>
+                            Alternate History
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_ambient">
+                            <span class="slider"></span>
+                            Ambient
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_america">
+                            <span class="slider"></span>
+                            America
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_animation_modeling">
+                            <span class="slider"></span>
+                            Animation &amp; Modeling
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_anime">
+                            <span class="slider"></span>
+                            Anime
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_arcade">
+                            <span class="slider"></span>
+                            Arcade
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_archery">
+                            <span class="slider"></span>
+                            Archery
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_arena_shooter">
+                            <span class="slider"></span>
+                            Arena Shooter
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_artificial_intelligence">
+                            <span class="slider"></span>
+                            Artificial Intelligence
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_assassin">
+                            <span class="slider"></span>
+                            Assassin
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_asymmetric_vr">
+                            <span class="slider"></span>
+                            Asymmetric VR
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_asynchronous_multiplayer">
+                            <span class="slider"></span>
+                            Asynchronous Multiplayer
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_atmospheric">
+                            <span class="slider"></span>
+                            Atmospheric
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_audio_production">
+                            <span class="slider"></span>
+                            Audio Production
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_auto_battler">
+                            <span class="slider"></span>
+                            Auto Battler
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_automation">
+                            <span class="slider"></span>
+                            Automation
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_automobile_sim">
+                            <span class="slider"></span>
+                            Automobile Sim
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_bmx">
+                            <span class="slider"></span>
+                            BMX
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_base_building">
+                            <span class="slider"></span>
+                            Base-Building
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_baseball">
+                            <span class="slider"></span>
+                            Baseball
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_based_on_a_novel">
+                            <span class="slider"></span>
+                            Based On A Novel
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_basketball">
+                            <span class="slider"></span>
+                            Basketball
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_batman">
+                            <span class="slider"></span>
+                            Batman
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_battle_royale">
+                            <span class="slider"></span>
+                            Battle Royale
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_beat_em_up">
+                            <span class="slider"></span>
+                            Beat 'em up
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_beautiful">
+                            <span class="slider"></span>
+                            Beautiful
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_benchmark">
+                            <span class="slider"></span>
+                            Benchmark
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_bikes">
+                            <span class="slider"></span>
+                            Bikes
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_birds">
+                            <span class="slider"></span>
+                            Birds
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_blood">
+                            <span class="slider"></span>
+                            Blood
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_board_game">
+                            <span class="slider"></span>
+                            Board Game
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_boomer_shooter">
+                            <span class="slider"></span>
+                            Boomer Shooter
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_boss_rush">
+                            <span class="slider"></span>
+                            Boss Rush
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_bowling">
+                            <span class="slider"></span>
+                            Bowling
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_boxing">
+                            <span class="slider"></span>
+                            Boxing
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_building">
+                            <span class="slider"></span>
+                            Building
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_bullet_hell">
+                            <span class="slider"></span>
+                            Bullet Hell
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_bullet_time">
+                            <span class="slider"></span>
+                            Bullet Time
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_crpg">
+                            <span class="slider"></span>
+                            CRPG
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_capitalism">
+                            <span class="slider"></span>
+                            Capitalism
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_card_battler">
+                            <span class="slider"></span>
+                            Card Battler
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_card_game">
+                            <span class="slider"></span>
+                            Card Game
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cartoon">
+                            <span class="slider"></span>
+                            Cartoon
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cartoony">
+                            <span class="slider"></span>
+                            Cartoony
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_casual">
+                            <span class="slider"></span>
+                            Casual
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cats">
+                            <span class="slider"></span>
+                            Cats
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_character_action_game">
+                            <span class="slider"></span>
+                            Character Action Game
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_character_customization">
+                            <span class="slider"></span>
+                            Character Customization
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_chess">
+                            <span class="slider"></span>
+                            Chess
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_choices_matter">
+                            <span class="slider"></span>
+                            Choices Matter
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_choose_your_own_adventure">
+                            <span class="slider"></span>
+                            Choose Your Own Adventure
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cinematic">
+                            <span class="slider"></span>
+                            Cinematic
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_city_builder">
+                            <span class="slider"></span>
+                            City Builder
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_class_based">
+                            <span class="slider"></span>
+                            Class-Based
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_classic">
+                            <span class="slider"></span>
+                            Classic
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_clicker">
+                            <span class="slider"></span>
+                            Clicker
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_co_op">
+                            <span class="slider"></span>
+                            Co-op
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_co_op_campaign">
+                            <span class="slider"></span>
+                            Co-op Campaign
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_coding">
+                            <span class="slider"></span>
+                            Coding
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cold_war">
+                            <span class="slider"></span>
+                            Cold War
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_collectathon">
+                            <span class="slider"></span>
+                            Collectathon
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_colony_sim">
+                            <span class="slider"></span>
+                            Colony Sim
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_colorful">
+                            <span class="slider"></span>
+                            Colorful
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_combat">
+                            <span class="slider"></span>
+                            Combat
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_combat_racing">
+                            <span class="slider"></span>
+                            Combat Racing
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_comedy">
+                            <span class="slider"></span>
+                            Comedy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_comic_book">
+                            <span class="slider"></span>
+                            Comic Book
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_competitive">
+                            <span class="slider"></span>
+                            Competitive
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_conspiracy">
+                            <span class="slider"></span>
+                            Conspiracy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_controller">
+                            <span class="slider"></span>
+                            Controller
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_conversation">
+                            <span class="slider"></span>
+                            Conversation
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cooking">
+                            <span class="slider"></span>
+                            Cooking
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cozy">
+                            <span class="slider"></span>
+                            Cozy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_crafting">
+                            <span class="slider"></span>
+                            Crafting
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_creature_collector">
+                            <span class="slider"></span>
+                            Creature Collector
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cricket">
+                            <span class="slider"></span>
+                            Cricket
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_crime">
+                            <span class="slider"></span>
+                            Crime
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_crowdfunded">
+                            <span class="slider"></span>
+                            Crowdfunded
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cult_classic">
+                            <span class="slider"></span>
+                            Cult Classic
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cute">
+                            <span class="slider"></span>
+                            Cute
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cyberpunk">
+                            <span class="slider"></span>
+                            Cyberpunk
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_cycling">
+                            <span class="slider"></span>
+                            Cycling
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dark">
+                            <span class="slider"></span>
+                            Dark
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dark_comedy">
+                            <span class="slider"></span>
+                            Dark Comedy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dark_fantasy">
+                            <span class="slider"></span>
+                            Dark Fantasy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dark_humor">
+                            <span class="slider"></span>
+                            Dark Humor
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dating_sim">
+                            <span class="slider"></span>
+                            Dating Sim
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_deckbuilding">
+                            <span class="slider"></span>
+                            Deckbuilding
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_demons">
+                            <span class="slider"></span>
+                            Demons
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_design_illustration">
+                            <span class="slider"></span>
+                            Design &amp; Illustration
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_destruction">
+                            <span class="slider"></span>
+                            Destruction
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_detective">
+                            <span class="slider"></span>
+                            Detective
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dice">
+                            <span class="slider"></span>
+                            Dice
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_difficult">
+                            <span class="slider"></span>
+                            Difficult
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dinosaurs">
+                            <span class="slider"></span>
+                            Dinosaurs
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_diplomacy">
+                            <span class="slider"></span>
+                            Diplomacy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_documentary">
+                            <span class="slider"></span>
+                            Documentary
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dog">
+                            <span class="slider"></span>
+                            Dog
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dragons">
+                            <span class="slider"></span>
+                            Dragons
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_drama">
+                            <span class="slider"></span>
+                            Drama
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_driving">
+                            <span class="slider"></span>
+                            Driving
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dungeon_crawler">
+                            <span class="slider"></span>
+                            Dungeon Crawler
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dungeons_dragons">
+                            <span class="slider"></span>
+                            Dungeons &amp; Dragons
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dwarf">
+                            <span class="slider"></span>
+                            Dwarf
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dynamic_narration">
+                            <span class="slider"></span>
+                            Dynamic Narration
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_dystopian">
+                            <span class="slider"></span>
+                            Dystopian
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_early_access">
+                            <span class="slider"></span>
+                            Early Access
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_economy">
+                            <span class="slider"></span>
+                            Economy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_education">
+                            <span class="slider"></span>
+                            Education
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_electronic">
+                            <span class="slider"></span>
+                            Electronic
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_electronic_music">
+                            <span class="slider"></span>
+                            Electronic Music
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_elf">
+                            <span class="slider"></span>
+                            Elf
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_emotional">
+                            <span class="slider"></span>
+                            Emotional
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_epic">
+                            <span class="slider"></span>
+                            Epic
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_episodic">
+                            <span class="slider"></span>
+                            Episodic
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_escape_room">
+                            <span class="slider"></span>
+                            Escape Room
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_experience">
+                            <span class="slider"></span>
+                            Experience
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_experimental">
+                            <span class="slider"></span>
+                            Experimental
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_exploration">
+                            <span class="slider"></span>
+                            Exploration
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_extraction_shooter">
+                            <span class="slider"></span>
+                            Extraction Shooter
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_fmv">
+                            <span class="slider"></span>
+                            FMV
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_fps">
+                            <span class="slider"></span>
+                            FPS
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_faith">
+                            <span class="slider"></span>
+                            Faith
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_family_friendly">
+                            <span class="slider"></span>
+                            Family Friendly
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_fantasy">
+                            <span class="slider"></span>
+                            Fantasy
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_farming">
+                            <span class="slider"></span>
+                            Farming
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_farming_sim">
+                            <span class="slider"></span>
+                            Farming Sim
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_fast_paced">
+                            <span class="slider"></span>
+                            Fast-Paced
+                        </label>
+
+                        <label class="switch">
+                            <input type="checkbox" name="tag_feature_film">
+                            <span class="slider"></span>
+                            Feature Film
+                        </label>
+                        <label class="switch"><input type="checkbox" name="tag_female_protagonist"><span class="slider"></span>Female Protagonist</label>
+                        <label class="switch"><input type="checkbox" name="tag_fighting"><span class="slider"></span>Fighting</label>
+                        <label class="switch"><input type="checkbox" name="tag_first_person"><span class="slider"></span>First-Person</label>
+                        <label class="switch"><input type="checkbox" name="tag_fishing"><span class="slider"></span>Fishing</label>
+                        <label class="switch"><input type="checkbox" name="tag_flight"><span class="slider"></span>Flight</label>
+                        <label class="switch"><input type="checkbox" name="tag_football"><span class="slider"></span>Football</label>
+                        <label class="switch"><input type="checkbox" name="tag_football_american"><span class="slider"></span>Football (American)</label>
+                        <label class="switch"><input type="checkbox" name="tag_football_soccer"><span class="slider"></span>Football (Soccer)</label>
+                        <label class="switch"><input type="checkbox" name="tag_foreign"><span class="slider"></span>Foreign</label>
+                        <label class="switch"><input type="checkbox" name="tag_fox"><span class="slider"></span>Fox</label>
+                        <label class="switch"><input type="checkbox" name="tag_free_to_play"><span class="slider"></span>Free to Play</label>
+                        <label class="switch"><input type="checkbox" name="tag_funny"><span class="slider"></span>Funny</label>
+                        <label class="switch"><input type="checkbox" name="tag_futuristic"><span class="slider"></span>Futuristic</label>
+                        <label class="switch"><input type="checkbox" name="tag_gambling"><span class="slider"></span>Gambling</label>
+                        <label class="switch"><input type="checkbox" name="tag_game_development"><span class="slider"></span>Game Development</label>
+                        <label class="switch"><input type="checkbox" name="tag_gamemaker"><span class="slider"></span>GameMaker</label>
+                        <label class="switch"><input type="checkbox" name="tag_games_workshop"><span class="slider"></span>Games Workshop</label>
+                        <label class="switch"><input type="checkbox" name="tag_gaming"><span class="slider"></span>Gaming</label>
+                        <label class="switch"><input type="checkbox" name="tag_god_game"><span class="slider"></span>God Game</label>
+                        <label class="switch"><input type="checkbox" name="tag_golf"><span class="slider"></span>Golf</label>
+                        <label class="switch"><input type="checkbox" name="tag_gore"><span class="slider"></span>Gore</label>
+                        <label class="switch"><input type="checkbox" name="tag_gothic"><span class="slider"></span>Gothic</label>
+                        <label class="switch"><input type="checkbox" name="tag_grand_strategy"><span class="slider"></span>Grand Strategy</label>
+                        <label class="switch"><input type="checkbox" name="tag_great_soundtrack"><span class="slider"></span>Great Soundtrack</label>
+                        <label class="switch"><input type="checkbox" name="tag_grid_based_movement"><span class="slider"></span>Grid-Based Movement</label>
+                        <label class="switch"><input type="checkbox" name="tag_gun_customization"><span class="slider"></span>Gun Customization</label>
+                        <label class="switch"><input type="checkbox" name="tag_hack_and_slash"><span class="slider"></span>Hack and Slash</label>
+                        <label class="switch"><input type="checkbox" name="tag_hacking"><span class="slider"></span>Hacking</label>
+                        <label class="switch"><input type="checkbox" name="tag_hand_drawn"><span class="slider"></span>Hand-drawn</label>
+                        <label class="switch"><input type="checkbox" name="tag_hardware"><span class="slider"></span>Hardware</label>
+                        <label class="switch"><input type="checkbox" name="tag_heist"><span class="slider"></span>Heist</label>
+                        <label class="switch"><input type="checkbox" name="tag_hentai"><span class="slider"></span>Hentai</label>
+                        <label class="switch"><input type="checkbox" name="tag_hero_shooter"><span class="slider"></span>Hero Shooter</label>
+                        <label class="switch"><input type="checkbox" name="tag_hex_grid"><span class="slider"></span>Hex Grid</label>
+                        <label class="switch"><input type="checkbox" name="tag_hidden_object"><span class="slider"></span>Hidden Object</label>
+                        <label class="switch"><input type="checkbox" name="tag_historical"><span class="slider"></span>Historical</label>
+                        <label class="switch"><input type="checkbox" name="tag_hobby_sim"><span class="slider"></span>Hobby Sim</label>
+                        <label class="switch"><input type="checkbox" name="tag_hockey"><span class="slider"></span>Hockey</label>
+                        <label class="switch"><input type="checkbox" name="tag_horror"><span class="slider"></span>Horror</label>
+                        <label class="switch"><input type="checkbox" name="tag_horses"><span class="slider"></span>Horses</label>
+                        <label class="switch"><input type="checkbox" name="tag_hunting"><span class="slider"></span>Hunting</label>
+                        <label class="switch"><input type="checkbox" name="tag_idler"><span class="slider"></span>Idler</label>
+                        <label class="switch"><input type="checkbox" name="tag_illuminati"><span class="slider"></span>Illuminati</label>
+                        <label class="switch"><input type="checkbox" name="tag_immersive"><span class="slider"></span>Immersive</label>
+                        <label class="switch"><input type="checkbox" name="tag_immersive_sim"><span class="slider"></span>Immersive Sim</label>
+                        <label class="switch"><input type="checkbox" name="tag_indie"><span class="slider"></span>Indie</label>
+                        <label class="switch"><input type="checkbox" name="tag_instrumental_music"><span class="slider"></span>Instrumental Music</label>
+                        <label class="switch"><input type="checkbox" name="tag_intentionally_awkward_controls"><span class="slider"></span>Intentionally Awkward Controls</label>
+                        <label class="switch"><input type="checkbox" name="tag_interactive_fiction"><span class="slider"></span>Interactive Fiction</label>
+                        <label class="switch"><input type="checkbox" name="tag_inventory_management"><span class="slider"></span>Inventory Management</label>
+                        <label class="switch"><input type="checkbox" name="tag_investigation"><span class="slider"></span>Investigation</label>
+                        <label class="switch"><input type="checkbox" name="tag_isometric"><span class="slider"></span>Isometric</label>
+                        <label class="switch"><input type="checkbox" name="tag_jrpg"><span class="slider"></span>JRPG</label>
+                        <label class="switch"><input type="checkbox" name="tag_jet"><span class="slider"></span>Jet</label>
+                        <label class="switch"><input type="checkbox" name="tag_job_simulator"><span class="slider"></span>Job Simulator</label>
+                        <label class="switch"><input type="checkbox" name="tag_jump_scare"><span class="slider"></span>Jump Scare</label>
+                        <label class="switch"><input type="checkbox" name="tag_kickstarter"><span class="slider"></span>Kickstarter</label>
+                        <label class="switch"><input type="checkbox" name="tag_lego"><span class="slider"></span>LEGO</label>
+                        <label class="switch"><input type="checkbox" name="tag_lgbtq"><span class="slider"></span>LGBTQ+</label>
+                        <label class="switch"><input type="checkbox" name="tag_lara_croft"><span class="slider"></span>Lara Croft</label>
+                        <label class="switch"><input type="checkbox" name="tag_lemmings"><span class="slider"></span>Lemmings</label>
+                        <label class="switch"><input type="checkbox" name="tag_level_editor"><span class="slider"></span>Level Editor</label>
+                        <label class="switch"><input type="checkbox" name="tag_life_sim"><span class="slider"></span>Life Sim</label>
+                        <label class="switch"><input type="checkbox" name="tag_linear"><span class="slider"></span>Linear</label>
+                        <label class="switch"><input type="checkbox" name="tag_local_co_op"><span class="slider"></span>Local Co-Op</label>
+                        <label class="switch"><input type="checkbox" name="tag_local_multiplayer"><span class="slider"></span>Local Multiplayer</label>
+                        <label class="switch"><input type="checkbox" name="tag_logic"><span class="slider"></span>Logic</label>
+                        <label class="switch"><input type="checkbox" name="tag_loot"><span class="slider"></span>Loot</label>
+                        <label class="switch"><input type="checkbox" name="tag_looter_shooter"><span class="slider"></span>Looter Shooter</label>
+                        <label class="switch"><input type="checkbox" name="tag_lore_rich"><span class="slider"></span>Lore-Rich</label>
+                        <label class="switch"><input type="checkbox" name="tag_lovecraftian"><span class="slider"></span>Lovecraftian</label>
+                        <label class="switch"><input type="checkbox" name="tag_mmorpg"><span class="slider"></span>MMORPG</label>
+                        <label class="switch"><input type="checkbox" name="tag_moba"><span class="slider"></span>MOBA</label>
+                        <label class="switch"><input type="checkbox" name="tag_magic"><span class="slider"></span>Magic</label>
+                        <label class="switch"><input type="checkbox" name="tag_mahjong"><span class="slider"></span>Mahjong</label>
+                        <label class="switch"><input type="checkbox" name="tag_management"><span class="slider"></span>Management</label>
+                        <label class="switch"><input type="checkbox" name="tag_mars"><span class="slider"></span>Mars</label>
+                        <label class="switch"><input type="checkbox" name="tag_martial_arts"><span class="slider"></span>Martial Arts</label>
+                        <label class="switch"><input type="checkbox" name="tag_massively_multiplayer"><span class="slider"></span>Massively Multiplayer</label>
+                        <label class="switch"><input type="checkbox" name="tag_masterpiece"><span class="slider"></span>Masterpiece</label>
+                        <label class="switch"><input type="checkbox" name="tag_match_3"><span class="slider"></span>Match 3</label>
+                        <label class="switch"><input type="checkbox" name="tag_mature"><span class="slider"></span>Mature</label>
+                        <label class="switch"><input type="checkbox" name="tag_mechs"><span class="slider"></span>Mechs</label>
+                        <label class="switch"><input type="checkbox" name="tag_medical_sim"><span class="slider"></span>Medical Sim</label>
+                        <label class="switch"><input type="checkbox" name="tag_medieval"><span class="slider"></span>Medieval</label>
+                        <label class="switch"><input type="checkbox" name="tag_memes"><span class="slider"></span>Memes</label>
+                        <label class="switch"><input type="checkbox" name="tag_metroidvania"><span class="slider"></span>Metroidvania</label>
+                        <label class="switch"><input type="checkbox" name="tag_military"><span class="slider"></span>Military</label>
+                        <label class="switch"><input type="checkbox" name="tag_mini_golf"><span class="slider"></span>Mini Golf</label>
+                        <label class="switch"><input type="checkbox" name="tag_minigames"><span class="slider"></span>Minigames</label>
+                        <label class="switch"><input type="checkbox" name="tag_minimalist"><span class="slider"></span>Minimalist</label>
+                        <label class="switch"><input type="checkbox" name="tag_mining"><span class="slider"></span>Mining</label>
+                        <label class="switch"><input type="checkbox" name="tag_mod"><span class="slider"></span>Mod</label>
+                        <label class="switch"><input type="checkbox" name="tag_moddable"><span class="slider"></span>Moddable</label>
+                        <label class="switch"><input type="checkbox" name="tag_modern"><span class="slider"></span>Modern</label>
+                        <label class="switch"><input type="checkbox" name="tag_motocross"><span class="slider"></span>Motocross</label>
+                        <label class="switch"><input type="checkbox" name="tag_motorbike"><span class="slider"></span>Motorbike</label>
+                        <label class="switch"><input type="checkbox" name="tag_mouse_only"><span class="slider"></span>Mouse only</label>
+                        <label class="switch"><input type="checkbox" name="tag_movie"><span class="slider"></span>Movie</label>
+                        <label class="switch"><input type="checkbox" name="tag_multiplayer"><span class="slider"></span>Multiplayer</label>
+                        <label class="switch"><input type="checkbox" name="tag_multiple_endings"><span class="slider"></span>Multiple Endings</label>
+                        <label class="switch"><input type="checkbox" name="tag_music"><span class="slider"></span>Music</label>
+                        <label class="switch"><input type="checkbox" name="tag_music_based_procedural_generation"><span class="slider"></span>Music-Based Procedural Generation</label>
+                        <label class="switch"><input type="checkbox" name="tag_musou"><span class="slider"></span>Musou</label>
+                        <label class="switch"><input type="checkbox" name="tag_mystery"><span class="slider"></span>Mystery</label>
+                        <label class="switch"><input type="checkbox" name="tag_mystery_dungeon"><span class="slider"></span>Mystery Dungeon</label>
+                        <label class="switch"><input type="checkbox" name="tag_mythology"><span class="slider"></span>Mythology</label>
+                        <label class="switch"><input type="checkbox" name="tag_nsfw"><span class="slider"></span>NSFW</label>
+                        <label class="switch"><input type="checkbox" name="tag_narration"><span class="slider"></span>Narration</label>
+                        <label class="switch"><input type="checkbox" name="tag_narrative"><span class="slider"></span>Narrative</label>
+                        <label class="switch"><input type="checkbox" name="tag_nature"><span class="slider"></span>Nature</label>
+                        <label class="switch"><input type="checkbox" name="tag_naval"><span class="slider"></span>Naval</label>
+                        <label class="switch"><input type="checkbox" name="tag_naval_combat"><span class="slider"></span>Naval Combat</label>
+                        <label class="switch"><input type="checkbox" name="tag_ninja"><span class="slider"></span>Ninja</label>
+                        <label class="switch"><input type="checkbox" name="tag_noir"><span class="slider"></span>Noir</label>
+                        <label class="switch"><input type="checkbox" name="tag_nonlinear"><span class="slider"></span>Nonlinear</label>
+                        <label class="switch"><input type="checkbox" name="tag_nostalgia"><span class="slider"></span>Nostalgia</label>
+                        <label class="switch"><input type="checkbox" name="tag_nudity"><span class="slider"></span>Nudity</label>
+                        <label class="switch"><input type="checkbox" name="tag_offroad"><span class="slider"></span>Offroad</label>
+                        <label class="switch"><input type="checkbox" name="tag_old_school"><span class="slider"></span>Old School</label>
+                        <label class="switch"><input type="checkbox" name="tag_on_rails_shooter"><span class="slider"></span>On-Rails Shooter</label>
+                        <label class="switch"><input type="checkbox" name="tag_online_co_op"><span class="slider"></span>Online Co-Op</label>
+                        <label class="switch"><input type="checkbox" name="tag_open_world"><span class="slider"></span>Open World</label>
+                        <label class="switch"><input type="checkbox" name="tag_open_world_survival_craft"><span class="slider"></span>Open World Survival Craft</label>
+                        <label class="switch"><input type="checkbox" name="tag_otome"><span class="slider"></span>Otome</label>
+                        <label class="switch"><input type="checkbox" name="tag_outbreak_sim"><span class="slider"></span>Outbreak Sim</label>
+                        <label class="switch"><input type="checkbox" name="tag_parkour"><span class="slider"></span>Parkour</label>
+                        <label class="switch"><input type="checkbox" name="tag_parody"><span class="slider"></span>Parody</label>
+                        <label class="switch"><input type="checkbox" name="tag_party"><span class="slider"></span>Party</label>
+                        <label class="switch"><input type="checkbox" name="tag_party_game"><span class="slider"></span>Party Game</label>
+                        <label class="switch"><input type="checkbox" name="tag_party_based_rpg"><span class="slider"></span>Party-Based RPG</label>
+                        <label class="switch"><input type="checkbox" name="tag_perma_death"><span class="slider"></span>Perma Death</label>
+                        <label class="switch"><input type="checkbox" name="tag_philosophical"><span class="slider"></span>Philosophical</label>
+                        <label class="switch"><input type="checkbox" name="tag_photo_editing"><span class="slider"></span>Photo Editing</label>
+                        <label class="switch"><input type="checkbox" name="tag_physics"><span class="slider"></span>Physics</label>
+                        <label class="switch"><input type="checkbox" name="tag_pinball"><span class="slider"></span>Pinball</label>
+                        <label class="switch"><input type="checkbox" name="tag_pirates"><span class="slider"></span>Pirates</label>
+                        <label class="switch"><input type="checkbox" name="tag_pixel_graphics"><span class="slider"></span>Pixel Graphics</label>
+                        <label class="switch"><input type="checkbox" name="tag_platformer"><span class="slider"></span>Platformer</label>
+                        <label class="switch"><input type="checkbox" name="tag_point_and_click"><span class="slider"></span>Point &amp; Click</label>
+                        <label class="switch"><input type="checkbox" name="tag_political"><span class="slider"></span>Political</label>
+                        <label class="switch"><input type="checkbox" name="tag_political_sim"><span class="slider"></span>Political Sim</label>
+                        <label class="switch"><input type="checkbox" name="tag_politics"><span class="slider"></span>Politics</label>
+                        <label class="switch"><input type="checkbox" name="tag_pool"><span class="slider"></span>Pool</label>
+                        <label class="switch"><input type="checkbox" name="tag_post_apocalyptic"><span class="slider"></span>Post-apocalyptic</label>
+                        <label class="switch"><input type="checkbox" name="tag_precision_platformer"><span class="slider"></span>Precision Platformer</label>
+                        <label class="switch"><input type="checkbox" name="tag_procedural_generation"><span class="slider"></span>Procedural Generation</label>
+                        <label class="switch"><input type="checkbox" name="tag_programming"><span class="slider"></span>Programming</label>
+                        <label class="switch"><input type="checkbox" name="tag_psychedelic"><span class="slider"></span>Psychedelic</label>
+                        <label class="switch"><input type="checkbox" name="tag_psychological"><span class="slider"></span>Psychological</label>
+                        <label class="switch"><input type="checkbox" name="tag_psychological_horror"><span class="slider"></span>Psychological Horror</label>
+                        <label class="switch"><input type="checkbox" name="tag_puzzle"><span class="slider"></span>Puzzle</label>
+                        <label class="switch"><input type="checkbox" name="tag_puzzle_platformer"><span class="slider"></span>Puzzle-Platformer</label>
+                        <label class="switch"><input type="checkbox" name="tag_pve"><span class="slider"></span>PvE</label>
+                        <label class="switch"><input type="checkbox" name="tag_pvp"><span class="slider"></span>PvP</label>
+                        <label class="switch"><input type="checkbox" name="tag_quick_time_events"><span class="slider"></span>Quick-Time Events</label>
+                        <label class="switch"><input type="checkbox" name="tag_rpg"><span class="slider"></span>RPG</label>
+                        <label class="switch"><input type="checkbox" name="tag_rpgmaker"><span class="slider"></span>RPGMaker</label>
+                        <label class="switch"><input type="checkbox" name="tag_rts"><span class="slider"></span>RTS</label>
+                        <label class="switch"><input type="checkbox" name="tag_racing"><span class="slider"></span>Racing</label>
+                        <label class="switch"><input type="checkbox" name="tag_real_time_tactics"><span class="slider"></span>Real Time Tactics</label>
+                        <label class="switch"><input type="checkbox" name="tag_real_time"><span class="slider"></span>Real-Time</label>
+                        <label class="switch"><input type="checkbox" name="tag_real_time_with_pause"><span class="slider"></span>Real-Time with Pause</label>
+                        <label class="switch"><input type="checkbox" name="tag_realistic"><span class="slider"></span>Realistic</label>
+                        <label class="switch"><input type="checkbox" name="tag_reboot"><span class="slider"></span>Reboot</label>
+                        <label class="switch"><input type="checkbox" name="tag_relaxing"><span class="slider"></span>Relaxing</label>
+                        <label class="switch"><input type="checkbox" name="tag_remake"><span class="slider"></span>Remake</label>
+                        <label class="switch"><input type="checkbox" name="tag_replay_value"><span class="slider"></span>Replay Value</label>
+                        <label class="switch"><input type="checkbox" name="tag_resource_management"><span class="slider"></span>Resource Management</label>
+                        <label class="switch"><input type="checkbox" name="tag_retro"><span class="slider"></span>Retro</label>
+                        <label class="switch"><input type="checkbox" name="tag_rhythm"><span class="slider"></span>Rhythm</label>
+                        <label class="switch"><input type="checkbox" name="tag_robots"><span class="slider"></span>Robots</label>
+                        <label class="switch"><input type="checkbox" name="tag_rock_music"><span class="slider"></span>Rock Music</label>
+                        <label class="switch"><input type="checkbox" name="tag_rogue_like"><span class="slider"></span>Rogue-like</label>
+                        <label class="switch"><input type="checkbox" name="tag_rogue_lite"><span class="slider"></span>Rogue-lite</label>
+                        <label class="switch"><input type="checkbox" name="tag_roguelike_deckbuilder"><span class="slider"></span>Roguelike Deckbuilder</label>
+                        <label class="switch"><input type="checkbox" name="tag_roguevania"><span class="slider"></span>Roguevania</label>
+                        <label class="switch"><input type="checkbox" name="tag_romance"><span class="slider"></span>Romance</label>
+                        <label class="switch"><input type="checkbox" name="tag_rome"><span class="slider"></span>Rome</label>
+                        <label class="switch"><input type="checkbox" name="tag_rugby"><span class="slider"></span>Rugby</label>
+                        <label class="switch"><input type="checkbox" name="tag_runner"><span class="slider"></span>Runner</label>
+                        <label class="switch"><input type="checkbox" name="tag_sailing"><span class="slider"></span>Sailing</label>
+                        <label class="switch"><input type="checkbox" name="tag_sandbox"><span class="slider"></span>Sandbox</label>
+                        <label class="switch"><input type="checkbox" name="tag_satire"><span class="slider"></span>Satire</label>
+                        <label class="switch"><input type="checkbox" name="tag_sci_fi"><span class="slider"></span>Sci-fi</label>
+                        <label class="switch"><input type="checkbox" name="tag_science"><span class="slider"></span>Science</label>
+                        <label class="switch"><input type="checkbox" name="tag_score_attack"><span class="slider"></span>Score Attack</label>
+                        <label class="switch"><input type="checkbox" name="tag_sequel"><span class="slider"></span>Sequel</label>
+                        <label class="switch"><input type="checkbox" name="tag_sexual_content"><span class="slider"></span>Sexual Content</label>
+                        <label class="switch"><input type="checkbox" name="tag_shoot_em_up"><span class="slider"></span>Shoot 'Em Up</label>
+                        <label class="switch"><input type="checkbox" name="tag_shooter"><span class="slider"></span>Shooter</label>
+                        <label class="switch"><input type="checkbox" name="tag_shop_keeper"><span class="slider"></span>Shop Keeper</label>
+                        <label class="switch"><input type="checkbox" name="tag_short"><span class="slider"></span>Short</label>
+                        <label class="switch"><input type="checkbox" name="tag_side_scroller"><span class="slider"></span>Side Scroller</label>
+                        <label class="switch"><input type="checkbox" name="tag_silent_protagonist"><span class="slider"></span>Silent Protagonist</label>
+                        <label class="switch"><input type="checkbox" name="tag_simulation"><span class="slider"></span>Simulation</label>
+                        <label class="switch"><input type="checkbox" name="tag_singleplayer"><span class="slider"></span>Singleplayer</label>
+                        <label class="switch"><input type="checkbox" name="tag_skateboarding"><span class="slider"></span>Skateboarding</label>
+                        <label class="switch"><input type="checkbox" name="tag_skating"><span class="slider"></span>Skating</label>
+                        <label class="switch"><input type="checkbox" name="tag_skiing"><span class="slider"></span>Skiing</label>
+                        <label class="switch"><input type="checkbox" name="tag_sniper"><span class="slider"></span>Sniper</label>
+                        <label class="switch"><input type="checkbox" name="tag_snooker"><span class="slider"></span>Snooker</label>
+                        <label class="switch"><input type="checkbox" name="tag_snow"><span class="slider"></span>Snow</label>
+                        <label class="switch"><input type="checkbox" name="tag_snowboarding"><span class="slider"></span>Snowboarding</label>
+                        <label class="switch"><input type="checkbox" name="tag_social_deduction"><span class="slider"></span>Social Deduction</label>
+                        <label class="switch"><input type="checkbox" name="tag_software"><span class="slider"></span>Software</label>
+                        <label class="switch"><input type="checkbox" name="tag_software_training"><span class="slider"></span>Software Training</label>
+                        <label class="switch"><input type="checkbox" name="tag_sokoban"><span class="slider"></span>Sokoban</label>
+                        <label class="switch"><input type="checkbox" name="tag_solitaire"><span class="slider"></span>Solitaire</label>
+                        <label class="switch"><input type="checkbox" name="tag_souls_like"><span class="slider"></span>Souls-like</label>
+                        <label class="switch"><input type="checkbox" name="tag_soundtrack"><span class="slider"></span>Soundtrack</label>
+                        <label class="switch"><input type="checkbox" name="tag_space"><span class="slider"></span>Space</label>
+                        <label class="switch"><input type="checkbox" name="tag_space_sim"><span class="slider"></span>Space Sim</label>
+                        <label class="switch"><input type="checkbox" name="tag_spaceships"><span class="slider"></span>Spaceships</label>
+                        <label class="switch"><input type="checkbox" name="tag_spectacle_fighter"><span class="slider"></span>Spectacle fighter</label>
+                        <label class="switch"><input type="checkbox" name="tag_spelling"><span class="slider"></span>Spelling</label>
+                        <label class="switch"><input type="checkbox" name="tag_split_screen"><span class="slider"></span>Split Screen</label>
+                        <label class="switch"><input type="checkbox" name="tag_sports"><span class="slider"></span>Sports</label>
+                        <label class="switch"><input type="checkbox" name="tag_stealth"><span class="slider"></span>Stealth</label>
+                        <label class="switch"><input type="checkbox" name="tag_steam_machine"><span class="slider"></span>Steam Machine</label>
+                        <label class="switch"><input type="checkbox" name="tag_steampunk"><span class="slider"></span>Steampunk</label>
+                        <label class="switch"><input type="checkbox" name="tag_story_rich"><span class="slider"></span>Story Rich</label>
+                        <label class="switch"><input type="checkbox" name="tag_strategy"><span class="slider"></span>Strategy</label>
+                        <label class="switch"><input type="checkbox" name="tag_strategy_rpg"><span class="slider"></span>Strategy RPG</label>
+                        <label class="switch"><input type="checkbox" name="tag_stylized"><span class="slider"></span>Stylized</label>
+                        <label class="switch"><input type="checkbox" name="tag_submarine"><span class="slider"></span>Submarine</label>
+                        <label class="switch"><input type="checkbox" name="tag_superhero"><span class="slider"></span>Superhero</label>
+                        <label class="switch"><input type="checkbox" name="tag_supernatural"><span class="slider"></span>Supernatural</label>
+                        <label class="switch"><input type="checkbox" name="tag_surreal"><span class="slider"></span>Surreal</label>
+                        <label class="switch"><input type="checkbox" name="tag_survival"><span class="slider"></span>Survival</label>
+                        <label class="switch"><input type="checkbox" name="tag_survival_horror"><span class="slider"></span>Survival Horror</label>
+                        <label class="switch"><input type="checkbox" name="tag_swordplay"><span class="slider"></span>Swordplay</label>
+                        <label class="switch"><input type="checkbox" name="tag_tabletop"><span class="slider"></span>Tabletop</label>
+                        <label class="switch"><input type="checkbox" name="tag_tactical"><span class="slider"></span>Tactical</label>
+                        <label class="switch"><input type="checkbox" name="tag_tactical_rpg"><span class="slider"></span>Tactical RPG</label>
+                        <label class="switch"><input type="checkbox" name="tag_tanks"><span class="slider"></span>Tanks</label>
+                        <label class="switch"><input type="checkbox" name="tag_team_based"><span class="slider"></span>Team-Based</label>
+                        <label class="switch"><input type="checkbox" name="tag_tennis"><span class="slider"></span>Tennis</label>
+                        <label class="switch"><input type="checkbox" name="tag_text_based"><span class="slider"></span>Text-Based</label>
+                        <label class="switch"><input type="checkbox" name="tag_third_person"><span class="slider"></span>Third Person</label>
+                        <label class="switch"><input type="checkbox" name="tag_third_person_shooter"><span class="slider"></span>Third-Person Shooter</label>
+                        <label class="switch"><input type="checkbox" name="tag_thriller"><span class="slider"></span>Thriller</label>
+                        <label class="switch"><input type="checkbox" name="tag_tile_matching"><span class="slider"></span>Tile-Matching</label>
+                        <label class="switch"><input type="checkbox" name="tag_time_attack"><span class="slider"></span>Time Attack</label>
+                        <label class="switch"><input type="checkbox" name="tag_time_management"><span class="slider"></span>Time Management</label>
+                        <label class="switch"><input type="checkbox" name="tag_time_manipulation"><span class="slider"></span>Time Manipulation</label>
+                        <label class="switch"><input type="checkbox" name="tag_time_travel"><span class="slider"></span>Time Travel</label>
+                        <label class="switch"><input type="checkbox" name="tag_top_down"><span class="slider"></span>Top-Down</label>
+                        <label class="switch"><input type="checkbox" name="tag_top_down_shooter"><span class="slider"></span>Top-Down Shooter</label>
+                        <label class="switch"><input type="checkbox" name="tag_touch_friendly"><span class="slider"></span>Touch-Friendly</label>
+                        <label class="switch"><input type="checkbox" name="tag_tower_defense"><span class="slider"></span>Tower Defense</label>
+                        <label class="switch"><input type="checkbox" name="tag_trackir"><span class="slider"></span>TrackIR</label>
+                        <label class="switch"><input type="checkbox" name="tag_trading"><span class="slider"></span>Trading</label>
+                        <label class="switch"><input type="checkbox" name="tag_trading_card_game"><span class="slider"></span>Trading Card Game</label>
+                        <label class="switch"><input type="checkbox" name="tag_traditional_roguelike"><span class="slider"></span>Traditional Roguelike</label>
+                        <label class="switch"><input type="checkbox" name="tag_trains"><span class="slider"></span>Trains</label>
+                        <label class="switch"><input type="checkbox" name="tag_transhumanism"><span class="slider"></span>Transhumanism</label>
+                        <label class="switch"><input type="checkbox" name="tag_transportation"><span class="slider"></span>Transportation</label>
+                        <label class="switch"><input type="checkbox" name="tag_trivia"><span class="slider"></span>Trivia</label>
+                        <label class="switch"><input type="checkbox" name="tag_turn_based"><span class="slider"></span>Turn-Based</label>
+                        <label class="switch"><input type="checkbox" name="tag_turn_based_combat"><span class="slider"></span>Turn-Based Combat</label>
+                        <label class="switch"><input type="checkbox" name="tag_turn_based_strategy"><span class="slider"></span>Turn-Based Strategy</label>
+                        <label class="switch"><input type="checkbox" name="tag_turn_based_tactics"><span class="slider"></span>Turn-Based Tactics</label>
+                        <label class="switch"><input type="checkbox" name="tag_tutorial"><span class="slider"></span>Tutorial</label>
+                        <label class="switch"><input type="checkbox" name="tag_twin_stick_shooter"><span class="slider"></span>Twin Stick Shooter</label>
+                        <label class="switch"><input type="checkbox" name="tag_typing"><span class="slider"></span>Typing</label>
+                        <label class="switch"><input type="checkbox" name="tag_underground"><span class="slider"></span>Underground</label>
+                        <label class="switch"><input type="checkbox" name="tag_underwater"><span class="slider"></span>Underwater</label>
+                        <label class="switch"><input type="checkbox" name="tag_unforgiving"><span class="slider"></span>Unforgiving</label>
+                        <label class="switch"><input type="checkbox" name="tag_utilities"><span class="slider"></span>Utilities</label>
+                        <label class="switch"><input type="checkbox" name="tag_vr"><span class="slider"></span>VR</label>
+                        <label class="switch"><input type="checkbox" name="tag_vr_only"><span class="slider"></span>VR Only</label>
+                        <label class="switch"><input type="checkbox" name="tag_vampire"><span class="slider"></span>Vampire</label>
+                        <label class="switch"><input type="checkbox" name="tag_vehicular_combat"><span class="slider"></span>Vehicular Combat</label>
+                        <label class="switch"><input type="checkbox" name="tag_video_production"><span class="slider"></span>Video Production</label>
+                        <label class="switch"><input type="checkbox" name="tag_vikings"><span class="slider"></span>Vikings</label>
+                        <label class="switch"><input type="checkbox" name="tag_villain_protagonist"><span class="slider"></span>Villain Protagonist</label>
+                        <label class="switch"><input type="checkbox" name="tag_violent"><span class="slider"></span>Violent</label>
+                        <label class="switch"><input type="checkbox" name="tag_visual_novel"><span class="slider"></span>Visual Novel</label>
+                        <label class="switch"><input type="checkbox" name="tag_voice_control"><span class="slider"></span>Voice Control</label>
+                        <label class="switch"><input type="checkbox" name="tag_volleyball"><span class="slider"></span>Volleyball</label>
+                        <label class="switch"><input type="checkbox" name="tag_voxel"><span class="slider"></span>Voxel</label>
+                        <label class="switch"><input type="checkbox" name="tag_walking_simulator"><span class="slider"></span>Walking Simulator</label>
+                        <label class="switch"><input type="checkbox" name="tag_war"><span class="slider"></span>War</label>
+                        <label class="switch"><input type="checkbox" name="tag_wargame"><span class="slider"></span>Wargame</label>
+                        <label class="switch"><input type="checkbox" name="tag_warhammer_40k"><span class="slider"></span>Warhammer 40K</label>
+                        <label class="switch"><input type="checkbox" name="tag_web_publishing"><span class="slider"></span>Web Publishing</label>
+                        <label class="switch"><input type="checkbox" name="tag_well_written"><span class="slider"></span>Well-Written</label>
+                        <label class="switch"><input type="checkbox" name="tag_werewolves"><span class="slider"></span>Werewolves</label>
+                        <label class="switch"><input type="checkbox" name="tag_western"><span class="slider"></span>Western</label>
+                        <label class="switch"><input type="checkbox" name="tag_wholesome"><span class="slider"></span>Wholesome</label>
+                        <label class="switch"><input type="checkbox" name="tag_word_game"><span class="slider"></span>Word Game</label>
+                        <label class="switch"><input type="checkbox" name="tag_world_war_i"><span class="slider"></span>World War I</label>
+                        <label class="switch"><input type="checkbox" name="tag_world_war_ii"><span class="slider"></span>World War II</label>
+                        <label class="switch"><input type="checkbox" name="tag_wrestling"><span class="slider"></span>Wrestling</label>
+                        <label class="switch"><input type="checkbox" name="tag_zombies"><span class="slider"></span>Zombies</label>
+                        <label class="switch"><input type="checkbox" name="tag_esports"><span class="slider"></span>e-sports</label>
+                    </div>
+                </div>
+        </form>
+
+        <div class="prediction-result">
+            <div class="prediction-bar">
+                <div class="prediction-progress"></div>
+            </div>
+            <p class="prediction-label">Índice de predicción</p>
+        </div>
+
+        <div class="recommendations-box">
+            <h3>Recomendaciones</h3>
+            <p>Aquí se podrian mostrar las recomendaciones.</p>
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <!-- Pie de la web, copyright -->
+    <footer class="footer-section">
+        <div class="container text-right">
+            <p>&copy; PlayMetrics 2026</p>
+        </div>
+    </footer>
+{% endblock %}
+</body>
+</html>
