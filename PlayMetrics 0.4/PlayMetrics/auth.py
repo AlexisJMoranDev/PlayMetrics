@@ -19,13 +19,13 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Usted se Loggeo con éxito!', category='success')
+                flash('Usted ingresó con éxito!', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                flash('Password incorrecta, Pruebe de nuevo', category='error')
+                flash('Contraseña incorrecta, Pruebe de nuevo', category='error')
         else:
-            flash('El email no existe.', category='error')
+            flash('El correo no existe.', category='error')
 
     return render_template('login.html', user=current_user)
 
@@ -51,7 +51,7 @@ def sign_up():
 
         #Mensajes para los usuarios registrados/por registrar, metodo flash
         if existing_user:
-            flash('El email ya existe.', category='error')
+            flash('El correo ya existe.', category='error')
         elif len(email) < 4:
             flash('El correo debe ser mayor a 3 caracteres.', category='error')
         elif len(first_name) < 2:
