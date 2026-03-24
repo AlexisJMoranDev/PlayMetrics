@@ -58,14 +58,14 @@ def sign_up():
             flash('El primer nombre debe ser mayor a 1 caracter.', category='error')
         elif password1 != password2:
             flash('Las contraseñas no coinciden.', category='error')
-        elif not re.search(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[#@$/\-]).{7,}$', password1):
+        elif not re.search(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[#@$/\-.]).{7,}$', password1):
             flash('La contraseña debe ser mayor a 7 caracteres, incluir una letra, un número y un símbolo(#, @, $, /, -)', category='error')
         else:
             # Añade el usuario a la BD
             new_user = User(
                 email=email,
                 first_name=first_name,
-                password=generate_password_hash(password1, method='sha256')
+                password=generate_password_hash(password1, method='pbkdf2:sha256')
             )
             db.session.add(new_user)
             db.session.commit()
@@ -115,7 +115,7 @@ def edit_user():
                 flash('La nueva contraseña debe tener al menos 7 caracteres.', category='error')
                 return redirect(url_for('auth.edit_user'))
 
-            current_user.password = generate_password_hash(new_password, method='sha256')
+            current_user.password = generate_password_hash(new_password, method='pbkdf2:sha256')
         
         # Guardar avatares
         new_avatar = request.form.get('avatar')
