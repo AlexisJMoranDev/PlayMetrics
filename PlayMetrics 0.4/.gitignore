@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+
+instance/database.db
+*.db
+
+# ---- Archivos ocultos del sistema operativo ----
+.DS_Store
+Thumbs.db

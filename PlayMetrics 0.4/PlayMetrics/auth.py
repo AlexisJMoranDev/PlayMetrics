@@ -81,7 +81,6 @@ def sign_up():
 def user_profile():
     return render_template("user_profile.html", user=current_user)
 
-# Perfil de usuario / cambio de datos
 @auth.route("/edit/user", methods=['GET', 'POST'])
 @login_required
 def edit_user():

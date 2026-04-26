@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      # ---- Se protege el archivo database.db que está en la carpeta 'instance'
+      - ./instance:/app/instance

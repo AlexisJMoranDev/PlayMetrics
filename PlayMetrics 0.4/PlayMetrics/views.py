@@ -8,7 +8,7 @@ from models.LightGBM import predecir_exito
 
 views = Blueprint('views', __name__)
 
-ruta_csv = os.path.join(os.path.dirname(__file__), '..', 'Data', 'tags.csv')
+ruta_csv = os.path.join(os.path.dirname(__file__), '..', 'data', 'tags.csv')
 
 try:
     df_tags = pd.read_csv(ruta_csv)
