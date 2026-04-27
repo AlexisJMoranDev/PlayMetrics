@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(evento) {
         evento.preventDefault(); 
 
+        const btnGuardar = document.getElementById('btn-guardar');
+        const msgGuardado = document.getElementById('msg-guardado');
+        if (btnGuardar && msgGuardado) {
+            btnGuardar.disabled = false;
+            btnGuardar.textContent = 'Guardar Proyecto';
+            msgGuardado.style.display = 'none';
+            msgGuardado.textContent = '';
+        }
+        
         const checkboxes = document.querySelectorAll('.platform-checkbox:checked');
         if (checkboxes.length === 0) {
             alert("¡Atención! Debes seleccionar al menos una plataforma (Windows, Mac o Linux).");

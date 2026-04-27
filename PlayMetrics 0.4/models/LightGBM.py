@@ -48,7 +48,7 @@ def predecir_exito(precio, lenguajes, edad_minima, plataformas, mes_lanzamiento,
     tags_encoded_u = mlb.transform([tags_limpios])
     tag_cols_u = [f"tag_{limpiar_nombre_feature(t)}" for t in mlb.classes_]
     tags_df_u = pd.DataFrame(tags_encoded_u.toarray(), columns=tag_cols_u)
-    # ------ Junta la tabla de numeros con la tabla de los tags
+
     X_input = pd.concat([pd.DataFrame([fila_numerica]), tags_df_u], axis=1)
     X_input.columns = [limpiar_nombre_feature(c) for c in X_input.columns]
     
@@ -57,7 +57,6 @@ def predecir_exito(precio, lenguajes, edad_minima, plataformas, mes_lanzamiento,
     score_pred = float(model_success.predict(X_input)[0])
     owners_log = float(model_owners.predict(X_input)[0])
     
-    # ------- Destranformaciones 
     usuarios = max(0, int((10 ** owners_log) - 1))
     prob = success_a_probabilidad(score_pred)
     nivel = nivel_exito(prob)

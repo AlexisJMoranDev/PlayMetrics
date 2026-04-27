@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-
-
 {% block title %}PlayMetrics{% endblock %}
 <!-- Hero del proyecto -->
 {% block banner %} 
@@ -81,7 +79,7 @@
       <div class="col-md-4">
         <div class="tarjeta">
           <h3>Algoritmos</h3>
-          <p>PlayMetrics busca aprovechar al máximo determinados algoritmos que beneficien al proyecto tales como lo son algoritmos para inteligencia artificial, web develpment y bases de datos tales como:<br>*Regresión Lineal-Predicción de ventas.<br>*Regresión Logística-Clasificación de éxito o fracaso.<br>*Hashing criptográfico-Bases de datos relacionales.<br>*Control de flujo y validación determinística.<br>*Cálculo probabilístico.<br>*Scoring heurístico.</p>
+          <p>PlayMetrics busca aprovechar al máximo determinados algoritmos que beneficien al proyecto tales como lo son algoritmos para inteligencia artificial, web develpment y bases de datos tales como:<br>*Regresión (LightGBM)-Predicción de ventas.<br>*Hashing criptográfico-Bases de datos relacionales.<br>*Control de flujo y validación determinística.<br>*Cálculo probabilístico.<br>*Scoring heurístico.</p>
         </div>
       </div>
 
@@ -106,26 +104,18 @@
     </footer>
 {% endblock %}
 
-<!-- Script para animar imagenes -->
+<!-- Script para animar imagenes e inyectar loading despues de iniciar sesion -->
 {% block scripts %}
+<script src="{{ url_for('static', filename='JS/loader.js') }}"></script>
 <script>
-
   document.addEventListener("DOMContentLoaded", function() {
     const items = document.querySelectorAll('.feature-item');
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('show');
       });
-    }, {
-      threshold: 0.2
-    });
-
-    items.forEach(item => {
-      observer.observe(item);
-    });
+    }, { threshold: 0.2 });
+    items.forEach(item => observer.observe(item));
   });
 </script>
 {% endblock %}

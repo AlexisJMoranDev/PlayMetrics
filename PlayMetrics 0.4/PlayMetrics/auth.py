@@ -79,8 +79,13 @@ def sign_up():
 @auth.route("/user/profile")
 @login_required
 def user_profile():
-    return render_template("user_profile.html", user=current_user)
+    from .models import Prediccion
+    predicciones = Prediccion.query.filter_by(user_id=current_user.id)\
+                                   .order_by(Prediccion.fecha_guardado.desc())\
+                                   .all()
+    return render_template("user_profile.html", user=current_user, predicciones=predicciones)
 
+# Perfil de usuario / cambio de datos
 @auth.route("/edit/user", methods=['GET', 'POST'])
 @login_required
 def edit_user():
