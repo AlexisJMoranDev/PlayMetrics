@@ -16,24 +16,12 @@ ruta_csv = os.path.join(os.path.dirname(__file__), '..', 'data', 'tags.csv')
 
 try:
     df_tags = pd.read_csv(ruta_csv)
-
-    def obtener_valores_unicos(columna):
-        elementos_unicos = set()
-        for fila in df_tags[columna].dropna():
-            try:
-                lista_elementos = ast.literal_eval(fila)
-                for elemento in lista_elementos:
-                    elementos_unicos.add(elemento)
-            except (ValueError, SyntaxError):
-                continue
-        return sorted(list(elementos_unicos))
-
-    LISTA_CATEGORIAS = obtener_valores_unicos('categories')
-    LISTA_GENEROS    = obtener_valores_unicos('genres')
-    LISTA_TAGS       = obtener_valores_unicos('tags')
+    LISTA_TAGS_COMPLETA = df_tags['tag'].dropna().tolist()
+    LISTA_TAGS_COMPLETA = sorted(LISTA_TAGS_COMPLETA)
 
 except Exception as e:
-    LISTA_CATEGORIAS, LISTA_GENEROS, LISTA_TAGS = [], [], []
+    print(f"Error al cargar los tags: {e}")
+    LISTA_TAGS_COMPLETA = []
 
 
 # ── Vistas principales ────────────────────────────────────────
@@ -50,9 +38,7 @@ def predict():
     return render_template(
         "predict.html",
         user=current_user,
-        lista_categorias=LISTA_CATEGORIAS,
-        lista_generos=LISTA_GENEROS,
-        lista_tags=LISTA_TAGS
+        lista_tags_completa=LISTA_TAGS_COMPLETA
     )
 
 

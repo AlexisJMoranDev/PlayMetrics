@@ -85,32 +85,20 @@
         </div>
 
         <div class="col-12 mt-5">
-            <h4 class="border-bottom pb-2">Clasificación del Juego</h4>
+            <h4 class="border-bottom pb-2">Características y Tags del Juego</h4>
         </div>
 
-        <div class="col-md-4">
-            <label class="form-label fw-bold">Categorías</label>
-            <select class="form-control" id="categories_select" multiple>
-                {% for categoria in lista_categorias %}
-                    <option value="{{ categoria }}">{{ categoria }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label fw-bold">Géneros</label>
-            <select class="form-control" id="genres_select" multiple>
-                {% for genero in lista_generos %}
-                    <option value="{{ genero }}">{{ genero }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label fw-bold">Tags Adicionales</label>
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-end mb-2">
+                <label class="form-label fw-bold mb-0">Selecciona los géneros y tags del juego: </label>
+                <button type="button" id="btn-borrar-tags" class="btn-borrar">
+                    <i class="fa fa-trash"></i> Borrar Todo
+                </button>
+            </div>
+            
             <select class="form-control" id="tags_select" multiple>
-                {% for tag in lista_tags %}
-                    <option value="{{ tag }}">{{ tag }}</option>
+                {% for tag in lista_tags_completa %}
+                    <option value="{{ tag }}">{{ tag|title }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -185,47 +173,24 @@ function guardarProyecto() {
     const btn     = document.getElementById('btn-guardar');
     const msgDiv  = document.getElementById('msg-guardado');
 
-    // Recoger datos del formulario
-    const nombre       = document.getElementById('game_name').value.trim();
-    const precio       = parseFloat(document.getElementById('price').value) || 0;
-    const edad_minima  = parseInt(document.getElementById('min_age').value) || 0;
-    const mes          = parseInt(document.getElementById('release_month').value) || 1;
-
-    // Recoger el porcentaje que ya está en pantalla
-    const probTexto    = document.getElementById('res-probabilidad').textContent;
-    const probabilidad = parseFloat(probTexto.replace('%', '')) || 0;
-
-    // Recoger tags seleccionados de los tres selects
-    function getSelected(id) {
-        const sel = document.getElementById(id);
-        return Array.from(sel.selectedOptions).map(o => o.value);
+    if (!window.ultimaPrediccion) {
+        mostrarMensaje('error', 'No hay datos de predicción para guardar.');
+        return;
     }
-    const tags_combinados = [
-        ...getSelected('categories_select'),
-        ...getSelected('genres_select'),
-        ...getSelected('tags_select')
-    ];
 
-    if (!nombre) {
+    const datosAGuardar = window.ultimaPrediccion;
+    if (!datosAGuardar.nombre) {
         mostrarMensaje('error', 'El nombre del proyecto no puede estar vacío.');
         return;
     }
 
-    // Deshabilitar botón mientras se procesa
     btn.disabled    = true;
     btn.textContent = 'Guardando...';
 
     fetch('/api/guardar_proyecto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            nombre,
-            precio,
-            edad_minima,
-            mes_lanzamiento: mes,
-            tags_combinados,
-            probabilidad
-        })
+        body: JSON.stringify(datosAGuardar)
     })
     .then(r => r.json())
     .then(data => {

@@ -7,12 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
         shouldSort: false 
     };
 
-    const categoriesChoice = new Choices('#categories_select', configuracion);
-    const genresChoice = new Choices('#genres_select', configuracion);
     const tagsChoice = new Choices('#tags_select', configuracion);
 
+    const btnBorrarTags = document.getElementById('btn-borrar-tags');
+    if (btnBorrarTags) {
+        btnBorrarTags.addEventListener('click', function() {
+            tagsChoice.removeActiveItems();
+        });
+    }
+
     const form = document.getElementById('predict-form');
-    
+    document.getElementById('tags_select').addEventListener('addItem', function() {
+        form.classList.remove('error-en-tags');
+    });
     form.addEventListener('submit', function(evento) {
         evento.preventDefault(); 
 
@@ -27,17 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const checkboxes = document.querySelectorAll('.platform-checkbox:checked');
         if (checkboxes.length === 0) {
-            alert("¡Atención! Debes seleccionar al menos una plataforma (Windows, Mac o Linux).");
+            alert("Debes seleccionar al menos una plataforma (Windows, Mac o Linux)");
             return;
         }
 
         const plataformas = Array.from(checkboxes).map(cb => cb.value);
 
-        const categories = categoriesChoice.getValue(true);
-        const genres = genresChoice.getValue(true);
-        const tags = tagsChoice.getValue(true);
-        const allCombinedTags = [...new Set([...categories, ...genres, ...tags])];
-
+        const allCombinedTags = tagsChoice.getValue(true);
+        if (allCombinedTags.length === 0) {
+            form.classList.add('error-en-tags');
+            return;
+        }
         const requestData = {
             price: parseFloat(document.getElementById('price').value),
             min_age: parseInt(document.getElementById('min_age').value),
@@ -65,6 +72,15 @@ document.addEventListener('DOMContentLoaded', function() {
             btnSubmit.disabled = false;
 
             if(data.status === "success") {
+                
+                window.ultimaPrediccion = {
+                    nombre: document.getElementById('game_name').value.trim(),
+                    precio: requestData.price,
+                    edad_minima: requestData.min_age,
+                    mes_lanzamiento: requestData.release_month,
+                    tags_combinados: requestData.combined_tags,
+                    probabilidad: data.lgbm.probabilidad_exito
+                };
                 
                 const contenedorResultados = document.getElementById('resultados-prediccion');
                 contenedorResultados.classList.remove('d-none'); 
