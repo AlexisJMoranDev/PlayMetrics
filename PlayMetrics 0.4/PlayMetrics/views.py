@@ -204,10 +204,10 @@ Probabilidad de éxito: {proyecto.probabilidad:.1f}%
   PlayMetrics © {datetime.utcnow().year} — playmetrics.com
 ══════════════════════════════════════════
 """.strip()
-
+    codificado = contenido.encode('utf-8-sig')
     nombre_archivo = f"PlayMetrics_{proyecto.nombre.replace(' ', '_')}.txt"
 
-    response = make_response(contenido)
+    response = make_response(codificado)
     response.headers['Content-Disposition'] = f'attachment; filename="{nombre_archivo}"'
     response.headers['Content-Type'] = 'text/plain; charset=utf-8'
     return response
